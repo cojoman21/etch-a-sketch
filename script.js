@@ -14,3 +14,12 @@ for (let i = 0; i < 16; i++) {
     }
     mainDiv.appendChild(biggerDiv);
 }
+
+const squares = document.querySelectorAll(".square");
+
+squares.forEach((square) => {
+    square.addEventListener("mouseenter", function (event) {
+        event.target.style.backgroundColor = "#fff";
+        console.log("touched");
+    });
+});
