@@ -1,0 +1,15 @@
+html {
+    background-color: #000000;
+}
+
+.square {
+    background-color: #555555;
+    height: 0;
+    border: 1px solid #000000;
+    width: 6.25%;
+    padding-bottom: 6.25%;
+}
+
+.mainDiv {
+    display: flex;
+}
