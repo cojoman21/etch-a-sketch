@@ -41,22 +41,22 @@ createGrid(gridSize);
 let colorMode = randomRGB;
 setTrailEffect();
 
-function setTrailEffect() {
-    const squares = document.querySelectorAll(".square");
-    squares.forEach((square) => {
-        square.addEventListener("mouseenter", function (event) {
-            event.target.style.backgroundColor = colorMode();
-            setTimeout(() => {
-                event.target.style.backgroundColor = "";
-            }, 1000);
-        });
-    });
-}
+// function setTrailEffect() {
+//     const squares = document.querySelectorAll(".square");
+//     squares.forEach((square) => {
+//         square.addEventListener("mouseenter", function (event) {
+//             event.target.style.backgroundColor = colorMode();
+//             setTimeout(() => {
+//                 event.target.style.backgroundColor = "";
+//             }, 1000);
+//         });
+//     });
+// }
 
 const gridSizeBtn = document.querySelector("#gridSize");
 
 gridSizeBtn.addEventListener("click", () => {
-    gridSize = prompt("Enter grid size(max 100): ", 16);
+    gridSize = prompt("Enter grid size(max 100): ", gridSize);
     if (gridSize > 100) gridSize = 100;
     while (mainDiv.firstChild) {
         mainDiv.removeChild(mainDiv.firstChild);
@@ -79,3 +79,38 @@ colorModeBtn.addEventListener("click", (event) => {
         return;
     }
 });
+
+const coloredSquares = [];
+const mouseOverCount = 0;
+let timeoutID;
+
+function setTrailEffect() {
+    const squares = document.querySelectorAll(".square");
+    squares.forEach((square) => {
+        square.addEventListener("mouseenter", function (event) {
+            // Clear previous timeout
+            clearTimeout(timeoutID);
+            // Change square color
+            // Add square to coloredSquares array
+            if (coloredSquares.includes(event.target) === false) {
+                event.target.style.backgroundColor = colorMode();
+                coloredSquares.push(event.target);
+                while (coloredSquares.length >= 1000) {
+                    let removedSquare = coloredSquares.shift();
+                    removedSquare.style.backgroundColor = "";
+                }
+            }
+            // set timeout
+            timeoutID = setTimeout(() => {
+                queueSize = coloredSquares.length;
+                for (let i = 0; i < queueSize; i++) {
+                    setTimeout(() => {
+                        console.log(`setting reset delay for ${i}`);
+                        coloredSquares[i].style.backgroundColor = "";
+                    }, i * 2);
+                }
+                coloredSquares.splice();
+            }, 2000);
+        });
+    });
+}
