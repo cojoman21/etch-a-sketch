@@ -42,18 +42,6 @@ createGrid(gridSize);
 let colorMode = randomRGB;
 setTrailEffect();
 
-// function setTrailEffect() {
-//     const squares = document.querySelectorAll(".square");
-//     squares.forEach((square) => {
-//         square.addEventListener("mouseenter", function (event) {
-//             event.target.style.backgroundColor = colorMode();
-//             setTimeout(() => {
-//                 event.target.style.backgroundColor = "";
-//             }, 1000);
-//         });
-//     });
-// }
-
 const gridSizeBtn = document.querySelector("#gridSize");
 
 gridSizeBtn.addEventListener("click", () => {
