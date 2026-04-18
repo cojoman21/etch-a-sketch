@@ -13,6 +13,7 @@ function createGrid(gridSize) {
         row.style.display = "flex";
         for (let squares = 0; squares < gridSize; squares++) {
             let square = document.createElement("div");
+            square.style.opacity = "1.0";
             square.classList.add("square");
             row.appendChild(square);
         }
@@ -99,10 +100,10 @@ function setTrailEffect() {
                 event.target.style.backgroundColor = colorMode();
                 // Store the square
                 coloredSquares.push(event.target);
-                square.style.opacity = "1.0";
                 while (coloredSquares.length >= 1000) {
                     let removedSquare = coloredSquares.shift();
                     removedSquare.style.backgroundColor = "";
+                    removedSquare.style.opacity = "1.0";
                 }
             }
             // set timeout
