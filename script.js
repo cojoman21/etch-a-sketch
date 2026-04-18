@@ -80,8 +80,7 @@ colorModeBtn.addEventListener("click", (event) => {
     }
 });
 
-const coloredSquares = [];
-const mouseOverCount = 0;
+let coloredSquares = [];
 let timeoutID;
 
 function setTrailEffect() {
@@ -90,10 +89,12 @@ function setTrailEffect() {
         square.addEventListener("mouseenter", function (event) {
             // Clear previous timeout
             clearTimeout(timeoutID);
-            // Change square color
+
             // Add square to coloredSquares array
             if (coloredSquares.includes(event.target) === false) {
+                // Change square color
                 event.target.style.backgroundColor = colorMode();
+                // Store the square
                 coloredSquares.push(event.target);
                 while (coloredSquares.length >= 1000) {
                     let removedSquare = coloredSquares.shift();
@@ -102,15 +103,15 @@ function setTrailEffect() {
             }
             // set timeout
             timeoutID = setTimeout(() => {
-                queueSize = coloredSquares.length;
-                for (let i = 0; i < queueSize; i++) {
+                tempArray = coloredSquares;
+                coloredSquares = [];
+                for (let i = 0; i < tempArray.length; i++) {
                     setTimeout(() => {
                         console.log(`setting reset delay for ${i}`);
-                        coloredSquares[i].style.backgroundColor = "";
-                    }, i * 2);
+                        tempArray[i].style.backgroundColor = "";
+                    }, i * 1.5);
                 }
-                coloredSquares.splice();
-            }, 2000);
+            }, 1500);
         });
     });
 }
