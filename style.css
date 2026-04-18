@@ -2,6 +2,13 @@ html {
     background-color: #000000;
 }
 
+body {
+    height: 92vh;
+    width: auto;
+    aspect-ratio: 1/1;
+    justify-self: center;
+}
+
 .mainDiv {
     display: flex;
 }
@@ -9,18 +16,19 @@ html {
 .square {
     box-sizing: border-box;
     flex: 1;
-    padding-bottom: 6.25%;
+    aspect-ratio: 1 / 1;
     background-color: #818181;
     /* border: 1px solid #000000; */
 }
 
-.gridSize {
+.settings {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+    gap: 10px;
 }
 
 button {
     width: 100px;
-    height: 25px;
+    height: auto;
 }
