@@ -11,5 +11,16 @@ html {
     flex: 1;
     padding-bottom: 6.25%;
     background-color: #818181;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
+}
+
+.gridSize {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100px;
+    height: 25px;
 }
