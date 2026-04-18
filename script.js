@@ -91,11 +91,15 @@ function setTrailEffect() {
             clearTimeout(timeoutID);
 
             // Add square to coloredSquares array
-            if (coloredSquares.includes(event.target) === false) {
+            if (coloredSquares.includes(event.target)) {
+                // If the square is already in the array, decrease opacity
+                square.style.opacity -= "0.12";
+            } else {
                 // Change square color
                 event.target.style.backgroundColor = colorMode();
                 // Store the square
                 coloredSquares.push(event.target);
+                square.style.opacity = "1.0";
                 while (coloredSquares.length >= 1000) {
                     let removedSquare = coloredSquares.shift();
                     removedSquare.style.backgroundColor = "";
@@ -103,13 +107,14 @@ function setTrailEffect() {
             }
             // set timeout
             timeoutID = setTimeout(() => {
-                tempArray = coloredSquares;
+                tempArray = [...coloredSquares];
                 coloredSquares = [];
                 for (let i = 0; i < tempArray.length; i++) {
                     setTimeout(() => {
                         console.log(`setting reset delay for ${i}`);
                         tempArray[i].style.backgroundColor = "";
-                    }, i * 1.5);
+                        tempArray[i].style.opacity = "1.0";
+                    }, i * 2);
                 }
             }, 1500);
         });
