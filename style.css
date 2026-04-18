@@ -1,5 +1,9 @@
 html {
-    background-color: #000000;
+    background-color: #222222;
+}
+
+p {
+    color: #fff;
 }
 
 body {
@@ -28,7 +32,13 @@ body {
     gap: 10px;
 }
 
+.settings div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 button {
     width: 100px;
-    height: auto;
+    height: 40px;
 }
